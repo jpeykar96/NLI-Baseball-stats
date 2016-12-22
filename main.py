@@ -7,7 +7,7 @@ for item in sys.argv:
     if item != "main.py":
         a += item + " "
 a.strip(' ')
-print a
+# print a
 
 db = MySQLdb.connect(host="localhost",    # your host, usually localhost
                      user="root",         # your username
@@ -19,9 +19,9 @@ db = MySQLdb.connect(host="localhost",    # your host, usually localhost
 cur = db.cursor()
 
 # Use all the SQL you like
-cur.execute("SELECT * FROM teams")
+cur.execute("SELECT playerID, hr FROM batting as b WHERE b.hr>50")
 
-# for row in cur.fetchall():
-    # print row[0]
+for row in cur.fetchall():
+    print row[0]
 
 db.close()

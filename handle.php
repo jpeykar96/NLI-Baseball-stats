@@ -6,7 +6,7 @@ Results:
   $output = array();
   $a = "python main.py " . $_POST["question"];
   exec($a, $output);
-  echo $output[0];
+  echo var_dump($output);
 ?><br>
 
 
