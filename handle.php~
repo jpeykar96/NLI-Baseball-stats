@@ -1,6 +1,6 @@
 <html>
 <body>
-<a href="index.html">back</a>
+<a href="index.html">back</a><br>
 Results:
 <?php
   $output = array();
