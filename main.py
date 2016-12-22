@@ -93,16 +93,22 @@ elif action is "threw":
 
 elif action is "team":
     objectDone = ""
-    if "won" in input and "world" in input:
-        objectDone = 'WSWin'
-    elif "won" in input and "league" in input:
-        objectDone = "LgWin"
-    elif "won" in input and "division" in input:
-        objectDone = "DivWin"
-    elif "won" in input:
-        objectDone = "W"
-    elif "lost" in input:
-        objectDone = "L"
+    if "single" in input:
+        objectDone = 'H'
+    elif "double" in input:
+        objectDone = "2B"
+    elif "triple" in input:
+        objectDone = "3B"
+    elif "homerun" in input:
+        objectDone = "HR"
+    elif "rbi" in input:
+        objectDone = "RBI"
+    elif "walk" in input:
+        objectDone = "BB"
+    elif "bat" in input:
+        objectDone = "AB"
+    elif "stole" in input:
+        objectDone = "SB"
 
 
     selectCl = "SELECT T.name, "
