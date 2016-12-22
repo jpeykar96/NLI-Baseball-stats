@@ -16,7 +16,7 @@ db = MySQLdb.connect(host="localhost",    # your host, usually localhost
 
 cur = db.cursor()
 
-mapping = ["hit","threw","coached","studied","played"]
+mapping = ["hit","threw","team"]
 input = a.split(" ")
 action = ""
 for word in mapping:
@@ -58,12 +58,13 @@ if action is "hit":
         objectDone = "SB"
 
 
-    selectCl = "SELECT M.nameFirst, M.nameLast,"
+    selectCl = "SELECT M.nameFirst, M.nameLast, B.yearID,"
     selectCl  = selectCl + "B."+objectDone + " "
     fromCl = "FROM batting as B, master as M "
     whereCl = "WHERE B.playerID = M.playerID AND B." + objectDone + moreLess + numberB
     finalQuery = selectCl + fromCl + whereCl
     cur.execute(finalQuery)
+
 elif action is "threw":
     objectDone = ""
     if "won" in input:
@@ -83,7 +84,33 @@ elif action is "threw":
     elif "save" in input:
         objectDone = "SV"
 
-    selectCl = "SELECT M.nameFirst, M.nameLast,"
+    selectCl = "SELECT M.nameFirst, M.nameLast, P.yearID,"
+    selectCl  = selectCl + "P."+objectDone + " "
+    fromCl = "FROM pitching as P, master as M "
+    whereCl = "WHERE P.playerID = M.playerID AND P." + objectDone + moreLess + numberB
+    finalQuery = selectCl + fromCl + whereCl
+    cur.execute(finalQuery)
+
+elif action is "team":
+    objectDone = ""
+    if "won" in input:
+        objectDone = 'W'
+    elif "win" in input:
+        objectDone = "W"
+    elif "lost" in input:
+        objectDone = "L"
+    elif "complete" in input:
+        objectDone = "CG"
+    elif "shutout" in input:
+        objectDone = "SHO"
+    elif "strikeout" in input:
+        objectDone = "SO"
+    elif "homerun" in input:
+        objectDone = "HR"
+    elif "save" in input:
+        objectDone = "SV"
+
+    selectCl = "SELECT M.nameFirst, M.nameLast, P.yearID,"
     selectCl  = selectCl + "P."+objectDone + " "
     fromCl = "FROM pitching as P, master as M "
     whereCl = "WHERE P.playerID = M.playerID AND P." + objectDone + moreLess + numberB
@@ -93,8 +120,8 @@ elif action is "threw":
 for row in cur.fetchall():
     retRow = ""
     for col in row:
-        retRow += str(col) + " "
-    retRow.strip(" ")
+        retRow += str(col) + ","
+    retRow.strip(",")
     print retRow
 
 db.close()

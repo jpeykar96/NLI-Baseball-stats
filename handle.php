@@ -7,6 +7,7 @@ Results:
   $a = "python main.py " . $_POST["question"];
   exec($a, $output);
   foreach($output as $item) {
+    $output = explode(',', $item);
     echo "<li>".$item."</li>";
   }
 

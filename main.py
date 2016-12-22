@@ -120,8 +120,8 @@ elif action is "team":
 for row in cur.fetchall():
     retRow = ""
     for col in row:
-        retRow += str(col) + " "
-    retRow.strip(" ")
+        retRow += str(col) + ","
+    retRow = retRow[:-1]
     print retRow
 
 db.close()
