@@ -93,11 +93,11 @@ elif action is "threw":
 
 elif action is "team":
     objectDone = ""
-    if "won" in input && "world" in input:
+    if "won" in input and "world" in input:
         objectDone = 'WSWin'
-    elif "won" in input && "league" in input:
+    elif "won" in input and "league" in input:
         objectDone = "LgWin"
-    elif "won" in input && "division" in input:
+    elif "won" in input and "division" in input:
         objectDone = "DivWin"
     elif "won" in input:
         objectDone = "W"
@@ -107,8 +107,8 @@ elif action is "team":
 
     selectCl = "SELECT T.name, "
     selectCl  = selectCl + "T."+objectDone + " "
-    fromCl = "FROM teams as T"
-    whereCl = "WHERE P." + objectDone + moreLess + numberB
+    fromCl = "FROM teams as T "
+    whereCl = "WHERE T." + objectDone + moreLess + numberB
     finalQuery = selectCl + fromCl + whereCl
     cur.execute(finalQuery)
 
