@@ -16,7 +16,7 @@ db = MySQLdb.connect(host="localhost",    # your host, usually localhost
 
 cur = db.cursor()
 
-mapping = ["hit","threw","won","coached","studied","played"]
+mapping = ["hit","threw","coached","studied","played"]
 input = a.split(" ")
 action = ""
 for word in mapping:
