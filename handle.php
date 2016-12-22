@@ -6,7 +6,10 @@ Results:
   $output = array();
   $a = "python main.py " . $_POST["question"];
   exec($a, $output);
-  echo var_dump($output);
+  foreach($output as $item) {
+    echo "<li>".$item."</li>";
+  }
+
 ?><br>
 
 

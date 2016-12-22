@@ -64,6 +64,7 @@ if action is "hit":
     whereCl = "WHERE B.playerID = M.playerID AND B." + objectDone + moreLess + numberB
     finalQuery = selectCl + fromCl + whereCl
     cur.execute(finalQuery)
+
 elif action is "threw":
     objectDone = ""
     if "won" in input:

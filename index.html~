@@ -2,8 +2,8 @@
 <title>NLI Baseball stats</title>
 <body>
 <form method=POST action="handle.php">
-    <P><B>Enter your query:</B>
-    <P><input type=text name=name>
+    <P><B>Enter your question:</B>
+    <P><input type=text name=question style="width: 100px">
     <P><input type=submit>
 </form>
 </body></html>
