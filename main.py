@@ -22,6 +22,7 @@ action = ""
 for word in mapping:
     if word in input:
         action = word
+        break
 
 if "more" in input:
     moreLess = ">"
