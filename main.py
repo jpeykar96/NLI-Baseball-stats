@@ -58,7 +58,7 @@ if action is "hit":
         objectDone = "SB"
 
 
-    selectCl = "SELECT M.nameFirst, M.nameLast,"
+    selectCl = "SELECT M.nameFirst, M.nameLast, B.yearID,"
     selectCl  = selectCl + "B."+objectDone + " "
     fromCl = "FROM batting as B, master as M "
     whereCl = "WHERE B.playerID = M.playerID AND B." + objectDone + moreLess + numberB
@@ -84,7 +84,7 @@ elif action is "threw":
     elif "save" in input:
         objectDone = "SV"
 
-    selectCl = "SELECT M.nameFirst, M.nameLast,"
+    selectCl = "SELECT M.nameFirst, M.nameLast, P.yearID,"
     selectCl  = selectCl + "P."+objectDone + " "
     fromCl = "FROM pitching as P, master as M "
     whereCl = "WHERE P.playerID = M.playerID AND P." + objectDone + moreLess + numberB
