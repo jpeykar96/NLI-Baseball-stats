@@ -58,8 +58,8 @@ if action is "hit":
         objectDone = "SB"
 
 
-    selectCl = "SELECT M.nameFirst, M.nameLast, B.yearID,"
-    selectCl  = selectCl + "B."+objectDone + " "
+    selectCl = "SELECT M.nameFirst, M.nameLast, "
+    selectCl  = selectCl + "B."+objectDone + ",B.yearID "
     fromCl = "FROM batting as B, master as M "
     whereCl = "WHERE B.playerID = M.playerID AND B." + objectDone + moreLess + numberB
     finalQuery = selectCl + fromCl + whereCl
@@ -84,8 +84,8 @@ elif action is "threw":
     elif "save" in input:
         objectDone = "SV"
 
-    selectCl = "SELECT M.nameFirst, M.nameLast, P.yearID,"
-    selectCl  = selectCl + "P."+objectDone + " "
+    selectCl = "SELECT M.nameFirst, M.nameLast,"
+    selectCl  = selectCl + "P."+objectDone + ",P.yearID "
     fromCl = "FROM pitching as P, master as M "
     whereCl = "WHERE P.playerID = M.playerID AND P." + objectDone + moreLess + numberB
     finalQuery = selectCl + fromCl + whereCl
@@ -93,27 +93,22 @@ elif action is "threw":
 
 elif action is "team":
     objectDone = ""
-    if "won" in input:
-        objectDone = 'W'
-    elif "win" in input:
+    if "won" in input && "world" in input:
+        objectDone = 'WSWin'
+    elif "won" in input && "league" in input:
+        objectDone = "LgWin"
+    elif "won" in input && "division" in input:
+        objectDone = "DivWin"
+    elif "won" in input:
         objectDone = "W"
     elif "lost" in input:
         objectDone = "L"
-    elif "complete" in input:
-        objectDone = "CG"
-    elif "shutout" in input:
-        objectDone = "SHO"
-    elif "strikeout" in input:
-        objectDone = "SO"
-    elif "homerun" in input:
-        objectDone = "HR"
-    elif "save" in input:
-        objectDone = "SV"
 
-    selectCl = "SELECT M.nameFirst, M.nameLast, P.yearID,"
-    selectCl  = selectCl + "P."+objectDone + " "
-    fromCl = "FROM pitching as P, master as M "
-    whereCl = "WHERE P.playerID = M.playerID AND P." + objectDone + moreLess + numberB
+
+    selectCl = "SELECT T.name, "
+    selectCl  = selectCl + "T."+objectDone + " "
+    fromCl = "FROM teams as T"
+    whereCl = "WHERE P." + objectDone + moreLess + numberB
     finalQuery = selectCl + fromCl + whereCl
     cur.execute(finalQuery)
 
